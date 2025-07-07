@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container position-relative d-flex justify-content-center align-items-start" style="min-height: 100vh; padding-top: 60px;">
+
+  <!-- Logo Kiri Atas -->
+  <div class="position-absolute top-0 start-0 m-3 d-flex align-items-center">
+    <img src="{% static 'img/logo_bps_bw.png' %}" alt="Logo BPS" style="height: 30px; margin-right: 8px;">
+    <span style="font-size: 0.8rem; font-weight: 500; color: #333;">
+      BADAN PUSAT STATISTIK<br>KOTA SAMARINDA
+    </span>
+  </div>
+
+  <!-- Kartu Profil -->
+  <div class="card shadow-lg" style="width: 1000px; font-size: 1.1rem; position: relative; padding: 30px;">
+    <div class="card-body">
+
+      <!-- Judul -->
+      <h2 class="card-title text-center mb-4" style="font-size: 1.75rem;">Profil Pegawai</h2>
+
+      <!-- Foto Pegawai -->
+      {% if pegawai.foto %}
+      <div style="position: absolute; top: 60px; right: 30px;">
+        <img src="{{ pegawai.foto.url }}" alt="Foto Pegawai" class="img-thumbnail shadow" width="140">
+      </div>
+      {% endif %}
+
+      <!-- Data Pegawai -->
+      <style>
+        .custom-table tr:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+        .custom-table tr:nth-child(odd) {
+          background-color: #ffffff;
+        }
+        .custom-table tr:hover {
+          background-color: #e9ecef;
+          transition: 0.2s ease;
+        }
+      </style>
+
+      <div class="mb-3" style="padding-right: 180px;">
+        <table class="table table-borderless mb-0 custom-table" style="border-radius: 8px; overflow: hidden;">
+          <tbody>
+            <tr><th style="width: 180px;">NIP</th><td>: {{ pegawai.nip }}</td></tr>
+            <tr><th>Nama</th><td>: {{ pegawai.nama }}</td></tr>
+            <tr><th>Jabatan</th><td>: {{ pegawai.jabatan }}</td></tr>
+            <tr><th>Golongan</th><td>: {{ pegawai.golongan|default:"-" }}</td></tr>
+            <tr><th>Pangkat</th><td>: {{ pegawai.pangkat|default:"-" }}</td></tr>
+            <tr><th>Pendidikan</th><td>: {{ pegawai.pendidikan|default:"-" }}</td></tr>
+            <tr><th>Tim Kerja</th><td>: {{ pegawai.tim_kerja|default:"-" }}</td></tr>
+            <tr><th>TMT</th><td>: {{ pegawai.tmt|default:"-" }}</td></tr>
+            <tr><th>Angker 2024</th><td>: {{ pegawai.angker_2024|default:"-" }}</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tombol -->
+      <div class="text-center mt-4">
+        <a href="{% url 'edit_profil' %}" class="btn btn-warning px-4">Edit Profil</a>
+        <a href="{% url 'logout' %}" class="btn btn-danger px-4 ms-2">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Ornamen -->
+  <div style="position: absolute; bottom: 20px; left: 0; right: 0; text-align: center;">
+    <div class="d-flex justify-content-center gap-2 mb-1">
+      <span style="width: 10px; height: 10px; background-color: #007bff; border-radius: 50%; display: inline-block;"></span>
+      <span style="width: 10px; height: 10px; background-color: #ffc107; border-radius: 50%; display: inline-block;"></span>
+      <span style="width: 10px; height: 10px; background-color: #28a745; border-radius: 50%; display: inline-block;"></span>
+    </div>
+    <div style="font-size: 0.75rem; color: #444;">
+      samarindakota.bps.go.id
+    </div>
+  </div>
+
+</div>
+{% endblock %}

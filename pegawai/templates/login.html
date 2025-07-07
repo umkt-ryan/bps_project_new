@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container position-relative d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh;">
+
+  <!-- Logo Kiri Atas -->
+  <div class="position-absolute top-0 start-0 m-3 d-flex align-items-center">
+    <img src="{% static 'img/logo_bps_bw.png' %}" alt="Logo BPS" style="height: 32px; margin-right: 8px;">
+    <span style="font-size: 0.85rem; font-weight: 500; color: #333;">
+      BADAN PUSAT STATISTIK<br>KOTA SAMARINDA
+    </span>
+  </div>
+
+  <!-- Card Login -->
+  <div class="card shadow" style="width: 420px;">
+    <div class="card-body">
+      <h4 class="card-title mb-4 text-center">Login Pegawai</h4>
+      <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="nip" class="form-label">NIP:</label>
+          <input type="text" name="nip" id="nip" class="form-control" placeholder="Masukkan NIP Anda" required>
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+<!-- Ornamen Titik Warna dan Alamat Website -->
+<!-- Ornamen Titik Warna dan Alamat Website -->
+<div style="position: absolute; bottom: 20px; left: 0; right: 0; text-align: center;">
+  <!-- Titik Warna -->
+  <div class="d-flex justify-content-center gap-2 mb-1">
+    <span style="width: 10px; height: 10px; background-color: #007bff; border-radius: 50%; display: inline-block;"></span>
+    <span style="width: 10px; height: 10px; background-color: #ffc107; border-radius: 50%; display: inline-block;"></span>
+    <span style="width: 10px; height: 10px; background-color: #28a745; border-radius: 50%; display: inline-block;"></span>
+  </div>
+
+  <!-- Alamat Website -->
+  <div style="font-size: 0.75rem; color: #444;">
+    samarindakota.bps.go.id
+  </div>
+</div>
+</div>
+{% endblock %}

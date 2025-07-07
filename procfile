@@ -1,0 +1,1 @@
+web: gunicorn bps_project.wsgi
